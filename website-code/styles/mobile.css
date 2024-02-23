@@ -1,64 +1,110 @@
-body
-{
-    margin:auto;
-    background-color: white;
-}
-
-.login-header-carousel-outer-region
-{
-    padding-top: 25%;
-    padding-bottom: 25%;
+.container-centered-login {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: darkgray;
+    height: 66vh;
+    background: white;
 }
 
-.login-header-carousel-inner-region
-{
-    position: absolute;
-    margin: auto;
-    width: 95%;
-    height: 50%;
-}
-
-.div-centered-login
-{
-    width: 500px;
-    height: 450px;
-    background-color: lightgray;
-    border: 2px solid rgb(126, 126, 126);
-    position: fixed;
-    top:50%;
-    left:50%;
-    margin-left: -250px;
-    margin-top: -225px;
-    box-shadow: 0px 0px 24px gray;
-}
-
-.page-container
+.container-centered
 {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    width: 90%;
+    box-shadow: 0px 0px 24px black;
+
 }
 
-.page-segment
-{
-    display:flex;
-    padding-top: 10%;
-    flex-direction: column;
+* {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
-.login-strip
+form {
+    width: 500px;
+    box-shadow: 0px 0px 12px black;
+    border-radius: 25px;
+    padding: 40px;
+    background: whitesmoke;
+}
+
+input {
+    display: block;
+    width: 95%;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 20px auto;
+}
+
+label {
+    font-size: 18px;
+    padding: 10px;
+}
+
+button {
+    float: right;
+    padding: 15px 20px;
+    color: black;
+    border-radius: 6px;
+    margin-right: 10px;
+    border: none;
+    background: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.errorbox {
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 20px;
+    width: 95%;
+    border-radius: 6px;
+    margin: 20px auto;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+p
 {
+    font-size: 16px;
+}
+
+a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+.header-carousel-outer-region
+{
+    padding: 10px 0px;
+}
+
+.image-fill
+{
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+
+.horizontal-split
+{
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
-}
-
-.login-bordered
-{
-    padding-left: 5px;
-    padding-right: 5px;
-    box-shadow: 0px 0px 5px black;
+    flex-wrap: wrap;
+    flex-direction: row;
 }

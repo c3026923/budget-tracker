@@ -43,6 +43,8 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `employee_type` int NOT NULL,
   `locked` boolean NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   PRIMARY KEY (`user_id`),
   FOREIGN KEY (`department_id`) REFERENCES department (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );

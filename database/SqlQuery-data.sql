@@ -25,24 +25,24 @@ VALUES
 (5, 5, 'Repairs', '22 Roach Avenue', 'Hedgefield', 'HE14 6BL'),
 (6, 6, 'Administration', '08 Belle Road', 'Hedgefield', 'HE16 2CD');
 
-INSERT INTO user(department_id, first_name, surname, dob, email, employee_type, locked)
+INSERT INTO user(department_id, first_name, surname, dob, email, employee_type, locked, username, password)
 VALUES
 /* EMPLOYEES */
-(1, 'Paul', 'Allen', '1963-08-11', 'paulallen@company.org.uk', 0, false),
-(1, 'Mary', 'Grey', '1966-04-19', 'marygrey@company.org.uk', 0, false),
-(2, 'Robert', 'Fitzgerald', '1967-08-01', 'robertfitzgerald@company.org.uk', 0, false),
-(2, 'Steve', 'Bowman', '1984-12-01', 'stevebowman@company.org.uk', 0, false),
-(3, 'Ralph', 'Delfino', '1975-11-05', 'ralphdelfino@company.org.uk', 0, false),
-(4, 'Zoey', 'Chase', '2004-02-25', 'zoeychase@company.org.uk', 0, false),
-(5, 'Laura', 'Lane', '2000-04-22', 'lauralane@company.org.uk', 0, false),
+(1, 'Paul', 'Allen', '1963-08-11', 'paulallen@company.org.uk', 0, false, 'pallen', '123'),
+(1, 'Mary', 'Grey', '1966-04-19', 'marygrey@company.org.uk', 0, false, 'mgrey', '123'),
+(2, 'Robert', 'Fitzgerald', '1967-08-01', 'robertfitzgerald@company.org.uk', 0, false, 'rfitzgerald', '123'),
+(2, 'Steve', 'Bowman', '1984-12-01', 'stevebowman@company.org.uk', 0, false, 'sbowman', '123'),
+(3, 'Ralph', 'Delfino', '1975-11-05', 'ralphdelfino@company.org.uk', 0, false, 'rdelfino', '123'),
+(4, 'Zoey', 'Chase', '2004-02-25', 'zoeychase@company.org.uk', 0, false, 'zchase', '123'),
+(5, 'Laura', 'Lane', '2000-04-22', 'lauralane@company.org.uk', 0, false, 'llane', '123'),
 /* MANAGERS */
-(1, 'Sally', 'Peters', '1999-08-12', 'sallypeters@company.org.uk', 1, false),
-(2, 'Charles', 'Bale', '1997-10-24', 'charlesbale@company.org.uk', 1, false),
-(3, 'Patrick', 'Schofield', '2002-03-16', 'patrickschofield@company.org.uk', 1, false),
-(4, 'Alice', 'Mercer', '1984-12-04', 'stevebowman@company.org.uk', 1, false),
-(5, 'Adam', 'Reacher', '2000-02-09', 'adamreacher@company.org.uk', 1, false),
+(1, 'Sally', 'Peters', '1999-08-12', 'sallypeters@company.org.uk', 1, false, 'speters', '123'),
+(2, 'Charles', 'Bale', '1997-10-24', 'charlesbale@company.org.uk', 1, false, 'cbale', '123'),
+(3, 'Patrick', 'Schofield', '2002-03-16', 'patrickschofield@company.org.uk', 1, false, 'pschofield', '123'),
+(4, 'Alice', 'Mercer', '1984-12-04', 'stevebowman@company.org.uk', 1, false, 'amercer', '123'),
+(5, 'Adam', 'Reacher', '2000-02-09', 'adamreacher@company.org.uk', 1, false, 'areacher', '123'),
 /* ADMINS */
-(6, 'Sam', 'Richardson', '2001-05-01', 'samrichardson@company.org.uk', 2, false);
+(6, 'Sam', 'Richardson', '2001-05-01', 'samrichardson@company.org.uk', 2, false, 'srichardson', '123');
 
 INSERT into expense_transaction(user_id, name, info, value)
 VALUES
