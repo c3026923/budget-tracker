@@ -25,26 +25,29 @@ if(isset($_POST['username']) && isset($_POST['password']))
     }
     else //User has entered something into username, password or both.
     {
-        $sql = "SELECT * FROM user WHERE username = '$username' AND password= '$password'"; //Search for matching username and password from db.
+        $selectuser = "SELECT * FROM user WHERE username = '$username'";
+        $resultuser = mysqli_query($conn, $selectuser);
 
-        $result = mysqli_query($conn, $sql);
-
-        if(mysqli_num_rows($result) === 1)//If there's a match (can only be one result)
+        if(mysqli_num_rows($resultuser) === 1)//If there's only one username match
         {
-            $row = mysqli_fetch_assoc($result);
-            if($row['username'] === $username && $row['password'] === $password)
+            $passwordhashed = password_hash($password, PASSWORD_DEFAULT);
+            if(password_verify($password, $passwordhashed)) //User's input password matches the new hash check.
             {
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['name'] = $row['first_name'];
-                $_SESSION['user_id'] = $row['user_id'];
-
-                header("Location: home.php");
-                exit();
+                $row = mysqli_fetch_assoc($resultuser);
+                if($row['username'] === $username)
+                {
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['name'] = $row['first_name'];
+                    $_SESSION['user_id'] = $row['user_id'];
+    
+                    header("Location: home-admin.php");
+                    exit();
+                }
             }
         }
         else
         {
-            header("Location: login.php?error=login details are incorrect.");
+            header("Location: login.php?error=login details are incorrect");
             //Increment unsuccessful login attempt here.
             exit();
         }
@@ -52,6 +55,6 @@ if(isset($_POST['username']) && isset($_POST['password']))
 }
 else
 {
-    header("Location: home.php");
+    header("Location: home-admin.php");
     exit();
 }

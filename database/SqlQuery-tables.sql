@@ -40,11 +40,11 @@ CREATE TABLE `user` (
   `first_name` varchar(50) NOT NULL,
   `surname` varchar(50) NOT NULL,
   `dob` date NOT NULL,
-  `email` varchar(50) NOT NULL,
+  `email` varchar(150) NOT NULL,
   `employee_type` int NOT NULL,
   `locked` boolean NOT NULL,
   `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`),
   FOREIGN KEY (`department_id`) REFERENCES department (`department_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
