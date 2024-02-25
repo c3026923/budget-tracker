@@ -20,17 +20,21 @@ if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST[
     $createpassword = validate($_POST['createpassword']);
 
     $fields = array($departmentid, $firstname, $surname, $dob, $email, $employeetype, $locked, $createusername, $createpassword);
-    foreach ($fields as $input) {
-        if (is_null($input)) {
+    foreach ($fields as $input) 
+    {
+        if (is_null($input)) 
+        {
             header("Location: home-admin.php?error=not all fields have been entered");
             exit();
         }
     }
-    $passwordhashed = password_hash($createpassword, PASSWORD_DEFAULT);
+    $passwordhashed = password_hash($createpassword, PASSWORD_DEFAULT);//Generate a hashed and salted version of password input.
     $sqlinsert = "INSERT INTO user (department_id, first_name, surname, dob, email, employee_type, locked, username, password)
                     VALUES ('$departmentid', '$firstname', '$surname', '$dob', '$email', '$employeetype', '$locked', '$createusername', '$passwordhashed');";
     mysqli_query($conn, $sqlinsert);
-} else {
+} 
+else 
+{
     header("Location: home-admin.php");
     exit();
 }

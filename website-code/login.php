@@ -7,7 +7,7 @@
 <body>
     <div class="container-centered-login">
         <form action="processlogin.php" method="post">
-            <div class="header-carousel-outer-region">
+            <div class="header-outer-region">
                 <img src="images/testimage.png" class="image-fill" alt="" width="10">
             </div>
             <?php if (isset($_GET['error'])) { ?>
@@ -22,7 +22,6 @@
             <button type="submit">Login</button>
         </form>
     </div>
-
 </body>
 
 </html>

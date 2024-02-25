@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     <?php include 'includes/head.php'; ?>
 
     <head>
-        <title>Budget Tracker | Dashboard</title>
+        <title>Budget Tracker | Employee Dashboard</title>
     </head>
 
     <body>
@@ -25,7 +25,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 </div>
                 <p>AAAAAAAAAAAAAAAAAAA</p>
                 <p>AAAAAAAAAAAAAAAAAAA</p>
-
             </div>
         </div>
     </body>
