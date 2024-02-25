@@ -1,42 +1,47 @@
-.container-centered-wide
+
+.container-centered-background
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80vw;
-    box-shadow: 0px 0px 24px black;
+    height: 100vh;
+    background: lightskyblue;
+    box-shadow: 0px 0px 50px slateblue;
+}
+
+.container-centered-wide
+{
+    display: flex;
+    flex-direction: column;
+    min-width: 1500px;
+    max-width: 1500px;
     margin: auto;
-    min-width: 1000px;
-    max-width: 2000px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 600px slateblue;
 }
 
 .container-centered-narrow
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40vw;
-    box-shadow: 0px 0px 24px black;
-    margin: auto;
     min-width: 1000px;
     max-width: 2000px;
+    margin: auto;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 600px slateblue;
 }
 
-.container-centered-login 
+.container-centered-login
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 66vh;
-    background: white;
-}
-
-.padding-bottom
-{
-    padding-bottom: 10vh;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 0px 0px 600px slateblue;
 }
 
 * 
@@ -47,11 +52,9 @@
 
 form 
 {
-    width: 500px;
-    box-shadow: 0px 0px 12px black;
-    border-radius: 25px;
-    padding: 40px;
-    background: whitesmoke;
+    border-radius: 20px;
+    padding: 20px 10px;
+    background: white; 
 }
 
 input 
@@ -61,31 +64,39 @@ input
     border-radius: 12px;
     padding: 15px;
     margin: 20px auto;
+    background-color: lightskyblue;
+    border: none;
+    color: white;
 }
 
-label 
+input:hover
+{
+    background-color: skyblue;
+}
+
+label
 {
     font-size: 18px;
     padding: 10px;
 }
 
-button 
+button
 {
-    float: right;
-    padding: 15px 20px;
-    color: black;
+    padding: 15px 15px 15px 15px;
+    color: white;
+    font-weight: bold;
     border-radius: 6px;
     margin-right: 10px;
     border: none;
-    background: white;
+    background: lightskyblue;
 }
 
 button:hover 
 {
-    opacity: 0.8;
+    background-color: skyblue;
 }
 
-.errorbox 
+.error
 {
     background: #F2DEDE;
     color: #A94442;
@@ -146,8 +157,6 @@ a:hover
 {
     display:flex;
     flex-direction: column;
-    align-self: flex-start;
-    width: 100%;
     margin-left: 5%;
     margin-right: 5%;
 }

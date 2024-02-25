@@ -12,26 +12,31 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     </head>
 
     <body>
-        <div class="padding-bottom"></div>
-        <div class="container-centered-wide">
-            <div class="header-outer-region">
-                <img src="images/testimage-long.png" class="image-fill" alt="" width="10">
-            </div>
-            <div class="main-body">
-                <div class="horizontal-split">
-                    <div>
-                        <h1>Welcome, <?php echo $_SESSION['name']?></h1?>
-                    </div>
-                    <div>
-                        <a href="admin-createuser.php">Create User Account</a>
-                    </div>
-                    <div class="horizontal-split-item-right">
-                        <a href="processlogout.php">Logout</a>
-                    </div>
+        <div class="container-centered-background">
+            <div class="container-centered-wide">
+                <div class="header-outer-region">
+                    <img src="images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
                 </div>
-                <?php $date = date('Y-m-d H:i:s');?>
-                <h2>Today is <?php $date?></h2>
-                <p>You have submitted X out of Y target budget submissions. Please ensure that all areas have the most-recent target budget data uploaded to them.</p>
+                <div class="main-body">
+                    <div class="horizontal-split">
+                        <div>
+                            <h1>Welcome,
+                                <?php echo $_SESSION['name'] ?>
+                                </h1?>
+                        </div>
+                        <div>
+                            <a href="admin-createuser.php">Create User Account</a>
+                        </div>
+                        <div class="horizontal-split-item-right">
+                            <a href="processlogout.php">Logout</a>
+                        </div>
+                    </div>
+                    <?php $date = date('Y-m-d H:i:s'); ?>
+                    <h2>Today is
+                        <?php $date ?>
+                    </h2>
+                    <p>Please see below a list of all accounts registered to the system.</p>
+                </div>
             </div>
         </div>
     </body>

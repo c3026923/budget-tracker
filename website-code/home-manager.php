@@ -8,7 +8,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     <?php include 'includes/head.php'; ?>
 
     <head>
-        <title>Budget Tracker | Employee Dashboard</title>
+        <title>Budget Tracker | Manager Dashboard</title>
     </head>
 
     <body>
@@ -32,8 +32,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                     <h2>Today is
                         <?php $date ?>
                     </h2>
-                    <p>You have submitted X out of Y expense data submissions. Please continue to complete all outstanding
-                        expense submissions prior to close of day.</p>
+                    <p>You have submitted X out of Y target budget submissions. Please ensure that all areas have the
+                        most-recent target budget data uploaded to them.</p>
                 </div>
             </div>
         </div>
