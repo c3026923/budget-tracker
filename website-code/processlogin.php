@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_conn.php";
+include "db_connection.php";
 if (isset($_POST['username']) && isset($_POST['password'])) 
 {
     function validate($data) //Strip out unwanted characters from input fields.
@@ -26,7 +26,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
     else //User has entered something into username and password.
     {
         $selectusername = "SELECT * FROM user WHERE username = '$username'";
-        $resultusername = mysqli_query($conn, $selectusername);
+        $resultusername = mysqli_query($connection, $selectusername);
 
         if($_SESSION['latestusername'] != $username) //If a new username is being used, it won't be a consecutive login attempt.
         {

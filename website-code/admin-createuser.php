@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                             <a href="processlogout.php">Logout</a>
                         </div>
                     </div>
-                    <form action="createuser.php" method="post">
+                    <form action="accountcreate.php" method="post">
                         <?php if (isset($_GET['error'])) { ?>
                             <p class="error">
                                 <?php echo $_GET['error']; ?>

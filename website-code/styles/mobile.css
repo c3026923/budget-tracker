@@ -160,3 +160,163 @@ a:hover
     margin-left: 5%;
     margin-right: 5%;
 }
+
+.split-half
+{
+    display:flex;
+    align-items: center;
+}
+
+.split-half-left
+{
+    width: 100%;
+}
+
+.split-half-right
+{
+    width: 100%;
+    height: 33vh;
+    box-shadow: 0px 0px 5px lightblue;
+}
+
+table 
+{
+    min-width: 100%;
+}
+
+tr
+{
+    background-color: white;
+    box-shadow: 0px 0px 5px lightblue;
+    border-radius: 8px;
+}
+
+/*
+.td-selected
+{
+    background-color: blue;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.td-unselected
+{
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+*/
+
+tr:hover 
+{ 
+    /*
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+    */
+}
+
+table.tableSection thead, table.tableSection tbody /*Concept of using .tablesection, thead etc. from https://stackoverflow.com/questions/9844022/css-merging-div-and-table-borders*/
+{
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody 
+{
+    overflow:auto;
+    height: 33vh;
+}
+
+table.tableSection th, table.tableSection td 
+{
+    width: 100%;
+}
+
+.button-fillcell
+{
+    background-color: white;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.button-fillcell-clicked
+{
+    background-color: blue;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.button-fillcell:hover
+{
+    background-color: lightskyblue;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.button-lock
+{
+    color: white;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.button-lock:hover
+{
+    color: white;
+    background-color: #0b5ed7;
+    border-color: #0b5ed7;
+}
+
+.button-lock:focus
+{
+    color: #fff;
+    background-color: #0a58ca;
+    border-color: #0a53be;
+    text-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.button-lock:disabled
+{
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd
+}
+
+.button-delete
+{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.button-delete:hover
+{
+    color: #fff;
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
+.button-delete:focus
+{
+    text-shadow: 225, 83, 97;
+}
+
+.button-delete:active
+{
+    color: #fff;
+    background-color: #b02a37;
+    border-color: #a52834;
+    text-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.button-delete:disabled
+{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545
+}
