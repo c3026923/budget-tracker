@@ -14,8 +14,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     <head>
         <title>Budget Tracker | Admin Dashboard</title>
-        <script src="scripts/selectuser.js" defer></script>
-        <!--<script src="scripts/createclickablerows.js" defer></script>-->
+        <script src="scripts/datetime.js" defer></script>
+        <script src="scripts/refresh.js" defer></script>
     </head>
 
     <body>
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                             <a href="processlogout.php">Logout</a>
                         </div>
                     </div>
-                    <?php $date = date('Y-m-d H:i:s'); ?>
+                    <?php $date = date('m/d/Y h:i:s a', time()); ?>
                     <h2>Today is
                         <?php echo $date ?>
                     </h2>
@@ -51,16 +51,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                         <?php
                                         while ($row = mysqli_fetch_assoc($resultselectall)) {
                                             ?>
+                                        <tr onclick="selectUser()" class="">
                                             <td>
-                                                <button onclick="selectUser(this)" class="button-fillcell">
-                                                    <?php echo $row['user_id']; ?>
-                                                    <br>
-                                                    <?php echo $row['first_name']; ?>
-                                                    <?php echo $row['surname']; ?>
-                                                </button>
+                                                <?php echo $row['user_id']; ?>
+                                                <br>
+                                                <?php echo $row['first_name']; ?>
+                                                <?php echo $row['surname']; ?>
                                             </td>
-                                            <td><a href="" class="button-lock">Unlock/Lock</a></td>
-                                            <td><a href="" class="button-delete">Delete</a></td>
+                                            <td><a onclick="toggleUnlock()" class="button-lock" name="lockbutton">Unlock/Lock</a></td>
+                                            <td><a onclick="toggleDelete()" class="button-delete" name="deletebutton">Delete</a></td>
+                                        </tr>
                                         </tr>
                                         <?php
                                         }
@@ -69,7 +69,15 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                             </table>
                         </div>
                         <div class="split-half-right">
-                            <a href="accountlock.php">LOCK ACCOUNT TEST</a>
+                            <p class="select-user-text">Select any user from the list to view further information and options.</p> 
+                            <div class="confirmation-box">
+                                <p class="confirmation-box-text">Are you sure that you wish to lock this account?</p>
+                                <br>
+                                <div class="confirmation-box-buttons">
+                                    <button class="confirmation-button-yes">✔</button>
+                                    <button class="confirmation-button-no">X</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

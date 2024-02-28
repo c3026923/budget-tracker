@@ -55,13 +55,13 @@ if (isset($_POST['username']) && isset($_POST['password']))
                 switch ($rowfromusername['employee_type'])
                 {
                     case 0:
-                        header("Location: home-employee.php");
+                        header("Location: employee-home.php");
                         exit();
                     case 1:
-                        header("Location: home-manager.php");
+                        header("Location: manager-home.php");
                         exit();
                     case 2:
-                        header("Location: home-admin.php");
+                        header("Location: admin-home.php");
                         exit();
                 }
             } 

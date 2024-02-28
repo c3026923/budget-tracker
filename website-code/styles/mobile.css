@@ -170,6 +170,9 @@ a:hover
 .split-half-left
 {
     width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 50%;
 }
 
 .split-half-right
@@ -177,45 +180,58 @@ a:hover
     width: 100%;
     height: 33vh;
     box-shadow: 0px 0px 5px lightblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation-box
+{
+    box-shadow: 0px 0px 5px lightblue;
+    margin: auto;
+    padding: 30px;
+    width: 90%;
+    height: 75%;
+    text-align: center;
+}
+
+.confirmation-box-text
+{
+    font-size: 2.25vh;
+}
+
+.confirmation-box-buttons
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-button-yes
+{
+    border-radius: 50px;
+    background-color: greenyellow;
+    color: white;
+    margin-right: 25%;
+    font-size: 20px;
+    padding: 20px 40px;
+}
+
+.confirmation-button-no
+{
+    border-radius: 50px;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+    margin-left: 25%;
+    font-size: 20px;
+    padding: 20px 40px;
 }
 
 table 
 {
     min-width: 100%;
-}
-
-tr
-{
-    background-color: white;
-    box-shadow: 0px 0px 5px lightblue;
-    border-radius: 8px;
-}
-
-/*
-.td-selected
-{
-    background-color: blue;
-    color: white;
-    width: 100%;
-    height: 100%;
-}
-
-.td-unselected
-{
-    background-color: white;
-    color: black;
-    width: 100%;
-    height: 100%;
-}
-*/
-
-tr:hover 
-{ 
-    /*
-    background-color: blue;
-    color: white;
-    cursor: pointer;
-    */
 }
 
 table.tableSection thead, table.tableSection tbody /*Concept of using .tablesection, thead etc. from https://stackoverflow.com/questions/9844022/css-merging-div-and-table-borders*/
@@ -234,12 +250,27 @@ table.tableSection th, table.tableSection td
     width: 100%;
 }
 
-.button-fillcell
+tr
 {
     background-color: white;
     color: black;
     width: 100%;
     height: 100%;
+    box-shadow: 0px 0px 5px lightblue;
+    border-radius: 8px;
+}
+
+tr.clicked
+{
+    background-color: blue;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+
+td
+{
+    padding: 10px;
 }
 
 .button-fillcell-clicked
