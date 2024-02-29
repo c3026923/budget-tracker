@@ -33,7 +33,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
             $_SESSION['loginattempts']  = 1;
         }
 
-        if ($resultusername)
+        if (mysqli_num_rows($resultusername) != 0)
         {
             $rowfromusername = mysqli_fetch_assoc($resultusername);
             $_SESSION['latestusername'] = $rowfromusername['username'];
@@ -79,7 +79,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
                 {
                     header("Location: login.php?error=Login attempts: $attempts. Account now locked");
                     $sqllockacc = "UPDATE user SET locked='1' WHERE username = '$username'";
-                    mysqli_query($conn, $sqllockacc);
+                    mysqli_query($connection, $sqllockacc);
                     $_SESSION['loginattempts']  = 0;
                     exit();
                 } 

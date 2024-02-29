@@ -1,6 +1,7 @@
 <?php
 include "db_connection.php";
-if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST['surname']) && isset($_POST['dob']) && isset($_POST['email']) && isset($_POST['employeetype']) && isset($_POST['locked']) && isset($_POST['createusername']) && isset($_POST['createpassword'])) {
+if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST['surname']) && isset($_POST['dob']) && isset($_POST['email']) && isset($_POST['employeetype']) && isset($_POST['locked']) && isset($_POST['createusername']) && isset($_POST['createpassword'])) 
+{
     function validate($data) //Strip out unwanted characters from input fields.
     {
         $data = trim($data);
@@ -32,9 +33,12 @@ if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST[
     $sqlinsert = "INSERT INTO user (department_id, first_name, surname, dob, email, employee_type, locked, username, password)
                     VALUES ('$departmentid', '$firstname', '$surname', '$dob', '$email', '$employeetype', '$locked', '$createusername', '$passwordhashed');";
     mysqli_query($connection, $sqlinsert);
+
+    mysqli_close($connection);
+    header("Location: admin-home.php");
 } 
 else 
 {
-    header("Location: home-admin.php");
+    header("Location: admin-home.php");
     exit();
 }

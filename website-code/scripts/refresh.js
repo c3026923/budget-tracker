@@ -77,13 +77,13 @@ function confirmAction(action)
             switch (action) 
             {
                 case 0:
-                    window.location.href = "unlock_user.php?user_id=" + selectedUserId;
+                    window.location.href = "processuserunlock.php?user_id=" + selectedUserId;
                     break;
                 case 1:
-                    window.location.href = "lock_user.php?user_id=" + selectedUserId;
+                    window.location.href = "processuserlock.php?user_id=" + selectedUserId;
                     break;
                 case 2:
-                    window.location.href = "delete_user.php?user_id=" + selectedUserId;
+                    window.location.href = "processuserdelete.php?user_id=" + selectedUserId;
                     break;
             }
         }

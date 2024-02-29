@@ -26,7 +26,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                             <button onclick="window.location.href='processlogout.php'">Logout</button>
                         </div>
                     </div>
-                    <form action="accountcreate.php" method="post">
+                    <form action="processcreateuser.php" method="post">
                         <?php if (isset($_GET['error'])) { ?>
                             <p class="error">
                                 <?php echo $_GET['error']; ?>
@@ -52,7 +52,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     </html>
     <?php
-} else {
+}
+else 
+{
     header("Location: login.php");
     exit();
 }
