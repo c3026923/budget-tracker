@@ -89,18 +89,21 @@ button:hover, input:hover
     opacity: 0.8;
 }
 
-.button-lock
-{
-    color: white;
-    background-color: #00A1FF;
-    border-color: mediumslateblue;
-}
-
 .button-unlock
 {
     color: white;
     background-color: #FF9200;
     border-color: mediumslateblue;
+    margin: auto;
+
+}
+
+.button-lock
+{
+    color: white;
+    background-color: #00A1FF;
+    border-color: mediumslateblue;
+    margin: auto;
 }
 
 .button-delete
@@ -108,6 +111,7 @@ button:hover, input:hover
     color: #fff;
     background-color: #FF0C00;
     border-color: #FF0C00;
+    margin: auto;
 }
 
 .button-lock:focus, .button-delete:focus
@@ -241,6 +245,13 @@ p
     margin-left: 25%;
     font-size: 20px;
     padding: 20px 40px;
+}
+
+.select-user-text
+{
+    width: 90%;
+    margin: auto;
+    font-size: 2.25vh;
 }
 
 table 
