@@ -14,8 +14,8 @@
 {
     display: flex;
     flex-direction: column;
-    min-width: 1500px;
-    max-width: 1500px;
+    min-width: 1200px;
+    max-width: 1200px;
     margin: auto;
     background-color: white;
     border-radius: 10px;
@@ -26,8 +26,6 @@
 {
     display: flex;
     flex-direction: column;
-    min-width: 1000px;
-    max-width: 2000px;
     margin: auto;
     align-items: center;
     background-color: white;
@@ -53,11 +51,11 @@
 form 
 {
     border-radius: 20px;
-    padding: 20px 10px;
+    padding: 10px 10px;
     background: white; 
 }
 
-input 
+.createinput
 {
     display: block;
     width: 95%;
@@ -69,31 +67,52 @@ input
     color: white;
 }
 
-input:hover
-{
-    background-color: skyblue;
-}
-
 label
 {
     font-size: 18px;
-    padding: 10px;
+    padding: 15px;
 }
 
 button
 {
-    padding: 15px 15px 15px 15px;
-    color: white;
-    font-weight: bold;
-    border-radius: 6px;
+    padding: 10px 15px;
+    border-radius: 5px;
     margin-right: 10px;
+    color: white;
+    background-color: #0051FF;
     border: none;
-    background: lightskyblue;
+    text-decoration: none;
 }
 
-button:hover 
+button:hover, input:hover
 {
-    background-color: skyblue;
+    opacity: 0.8;
+}
+
+.button-lock
+{
+    color: white;
+    background-color: #00A1FF;
+    border-color: mediumslateblue;
+}
+
+.button-unlock
+{
+    color: white;
+    background-color: #FF9200;
+    border-color: mediumslateblue;
+}
+
+.button-delete
+{
+    color: #fff;
+    background-color: #FF0C00;
+    border-color: #FF0C00;
+}
+
+.button-lock:focus, .button-delete:focus
+{
+    text-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.25);
 }
 
 .error
@@ -111,22 +130,17 @@ h1
     font-size: 32px;
 }
 
+h2
+{
+    text-align: center;
+    text-wrap:nowrap;
+    font-size: 100%;
+    padding-right: 20px;
+}
+
 p
 {
     font-size: 16px;
-}
-
-a 
-{
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-a:hover 
-{
-    opacity: 0.8;
 }
 
 .header-outer-region
@@ -271,83 +285,4 @@ tr.clicked
 td
 {
     padding: 10px;
-}
-
-.button-fillcell-clicked
-{
-    background-color: blue;
-    color: white;
-    width: 100%;
-    height: 100%;
-}
-
-.button-fillcell:hover
-{
-    background-color: lightskyblue;
-    color: black;
-    width: 100%;
-    height: 100%;
-}
-
-.button-lock
-{
-    color: white;
-    background-color: #0d6efd;
-    border-color: #0d6efd;
-}
-
-.button-lock:hover
-{
-    color: white;
-    background-color: #0b5ed7;
-    border-color: #0b5ed7;
-}
-
-.button-lock:focus
-{
-    color: #fff;
-    background-color: #0a58ca;
-    border-color: #0a53be;
-    text-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-
-.button-lock:disabled
-{
-    color: #fff;
-    background-color: #0d6efd;
-    border-color: #0d6efd
-}
-
-.button-delete
-{
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545;
-}
-
-.button-delete:hover
-{
-    color: #fff;
-    background-color: #bb2d3b;
-    border-color: #b02a37;
-}
-
-.button-delete:focus
-{
-    text-shadow: 225, 83, 97;
-}
-
-.button-delete:active
-{
-    color: #fff;
-    background-color: #b02a37;
-    border-color: #a52834;
-    text-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-}
-
-.button-delete:disabled
-{
-    color: #fff;
-    background-color: #dc3545;
-    border-color: #dc3545
 }

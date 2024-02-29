@@ -6,8 +6,8 @@ include "db_connection.php";
 $selectall = "SELECT * from user";
 $resultselectall = mysqli_query($connection, $selectall);
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
-
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) 
+{
     ?>
 
     <?php include 'includes/head.php'; ?>
@@ -32,16 +32,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                 </h1?>
                         </div>
                         <div>
-                            <a href="admin-createuser.php">Create User Account</a>
+                            <button onclick="window.location.href='admin-createuser.php'">Create User Account</button>
                         </div>
                         <div class="horizontal-split-item-right">
-                            <a href="processlogout.php">Logout</a>
+                            <button onclick="window.location.href='processlogout.php'">Logout</button>
                         </div>
                     </div>
                     <?php $date = date('m/d/Y h:i:s a', time()); ?>
-                    <h2>Today is
+                    <h3>Today is
                         <?php echo $date ?>
-                    </h2>
+                    </h3>
                     <p>Please see below a list of all accounts registered to the system.</p>
                     <div class="split-half">
                         <div class="split-half-left">
@@ -58,8 +58,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                                 <?php echo $row['first_name']; ?>
                                                 <?php echo $row['surname']; ?>
                                             </td>
-                                            <td><a onclick="toggleUnlock()" class="button-lock" name="lockbutton">Unlock/Lock</a></td>
-                                            <td><a onclick="toggleDelete()" class="button-delete" name="deletebutton">Delete</a></td>
+                                            <!--<td><button onclick="displayRelevant(0)" class="button-lock" name="lockbutton">Lock</button></td>
+                                            <td><button onclick="displayRelevant(2)" class="button-delete" name="deletebutton" href="">Delete</button></td>-->
+                                            <td><button name="lockbutton" class="button-lock" onclick="displayRelevant(0)">Lock</button></td>
+                                            <td><button name="deletebutton" class="button-delete" onclick="displayRelevant(2)">Delete</button></td>
                                         </tr>
                                         </tr>
                                         <?php
@@ -74,8 +76,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                 <p class="confirmation-box-text">Are you sure that you wish to lock this account?</p>
                                 <br>
                                 <div class="confirmation-box-buttons">
-                                    <button class="confirmation-button-yes">✔</button>
-                                    <button class="confirmation-button-no">X</button>
+                                    <button name="confirm" class="confirmation-button-yes" onclick="lockUnlockDeleteAccount(0)">✔</button>
+                                    <button name="cancel" class="confirmation-button-no" onclick="cancelAction()">X</button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +89,9 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
 
     </html>
     <?php
-} else {
+} 
+else 
+{
     header("Location: login.php");
     exit();
 }

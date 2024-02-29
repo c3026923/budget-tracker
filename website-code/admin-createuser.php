@@ -20,10 +20,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                 <div>
                     <div class="horizontal-split">
                         <div>
-                            <h1>Please enter all required fields:</h1?>
+                            <h2>Please enter all required fields</h2>
                         </div>
                         <div class="horizontal-split-item-right">
-                            <a href="processlogout.php">Logout</a>
+                            <button onclick="window.location.href='processlogout.php'">Logout</button>
                         </div>
                     </div>
                     <form action="accountcreate.php" method="post">
@@ -32,16 +32,16 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                 <?php echo $_GET['error']; ?>
                             </p>
                         <?php } ?>
-                        <input type="number" name="departmentid" placeholder="Department ID">
-                        <input type="text" name="firstname" placeholder="First Name">
-                        <input type="text" name="surname" placeholder="Surname">
-                        <input type="text" name="dob" placeholder="Date of Birth (YYYY-MM-DD)">
-                        <input type="text" name="email" placeholder="Email Address">
-                        <input type="number" name="employeetype"
+                        <input type="number" name="departmentid" class="createinput" placeholder="Department ID">
+                        <input type="text" name="firstname" class="createinput" placeholder="First Name">
+                        <input type="text" name="surname" class="createinput" placeholder="Surname">
+                        <input type="text" name="dob" class="createinput" placeholder="Date of Birth (YYYY-MM-DD)">
+                        <input type="text" name="email" class="createinput" placeholder="Email Address">
+                        <input type="number" class="createinput" name="employeetype"
                             placeholder="Employee Type (0: Employee, 1: Manager, 2: Admin)">
-                        <input type="number" name="locked" placeholder="Lock Account? (0: No, 1: Yes)">
-                        <input type="text" name="createusername" placeholder="Username">
-                        <input type="text" name="createpassword" placeholder="Password">
+                        <input type="number" name="locked" class="createinput" placeholder="Lock Account? (0: No, 1: Yes)">
+                        <input type="text" name="createusername" class="createinput" placeholder="Username">
+                        <input type="text" name="createpassword" class="createinput" placeholder="Password">
                         <button type="submit">CREATE USER</button>
                     </form>
                 </div>
