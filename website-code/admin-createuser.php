@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+if (isset($_SESSION['user_id'])) 
+{
 
     ?>
 
@@ -22,16 +23,8 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                         <div>
                             <h2>Please enter all required fields</h2>
                         </div>
-                        <div class="horizontal-split-item-right">
-                            <button onclick="window.location.href='processlogout.php'">Logout</button>
-                        </div>
                     </div>
                     <form action="processcreateuser.php" method="post">
-                        <?php if (isset($_GET['error'])) { ?>
-                            <p class="error">
-                                <?php echo $_GET['error']; ?>
-                            </p>
-                        <?php } ?>
                         <input type="number" name="departmentid" class="createinput" placeholder="Department ID">
                         <input type="text" name="firstname" class="createinput" placeholder="First Name">
                         <input type="text" name="surname" class="createinput" placeholder="Surname">
@@ -42,9 +35,10 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                         <input type="number" name="locked" class="createinput" placeholder="Lock Account? (0: No, 1: Yes)">
                         <input type="text" name="createusername" class="createinput" placeholder="Username">
                         <input type="text" name="createpassword" class="createinput" placeholder="Password">
-                        <button type="submit">CREATE USER</button>
+                        <button type="submit">Submit (Create User)</button>
                     </form>
                 </div>
+                <button onclick="window.location.href='admin-home.php'" class="button-return">Return Home</button>
             </div>
         </div>
 

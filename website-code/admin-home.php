@@ -3,10 +3,23 @@ session_start();
 
 include "db_connection.php";
 
-$selectall = "SELECT * from user";
-$resultselectall = mysqli_query($connection, $selectall);
+if (isset($_SESSION['user_id'])) //If we somehow reach this page without having a global session user_id, go to the else part which is to send them back to login page.
+{
+    $userid = $_SESSION['user_id'];
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    $determineusertype = "SELECT employee_type from user WHERE user_id = '$userid'";
+    $result1 = mysqli_query($connection, $determineusertype);
+    $row = mysqli_fetch_assoc($result1);
+    
+    if($row['employee_type'] != 2) //If the is was logged in as someone who isn't an admin and decides to try and access the admin page by changing the url manually, send them back to login page.
+    {
+        header("Location: processlogout.php");
+        exit();
+    }
+
+    $selectallusers = "SELECT * from user";
+    $result2 = mysqli_query($connection, $selectallusers);
+
     ?>
 
     <?php include 'includes/head.php'; ?>
@@ -14,7 +27,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     <head>
         <title>Budget Tracker | Admin Dashboard</title>
         <script src="scripts/datetime.js" defer></script>
-        <script src="scripts/refresh.js" defer></script>
+        <script src="scripts/admin.js" defer></script>
     </head>
 
     <body>
@@ -37,9 +50,11 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                             <button onclick="window.location.href='processlogout.php'">Logout</button>
                         </div>
                     </div>
-                    <?php $date = date('m/d/Y h:i:s a', time()); ?>
+                    <?php $date = date('l, jS \of F Y');  ?>
+                    <?php $time = date('h:i:s A');  ?>
                     <h3>Today is
-                        <?php echo $date ?>
+                        <?php echo $date ?> and the time is
+                        <?php echo $time ?>
                     </h3>
                     <p>Please see below a list of all accounts registered to the system.</p>
                     <div class="split-half">
@@ -48,17 +63,17 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                 <tbody>
                                     <tr class="tableSection.body">
                                         <?php
-                                        while ($row = mysqli_fetch_assoc($resultselectall)) 
+                                        while ($row = mysqli_fetch_assoc($result2)) 
                                         {
                                             ?>
                                             <tr onclick="selectUser(this)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
-                                            <td><?php echo $row['user_id']; ?>
+                                            <td class="td-name-section"><?php echo $row['user_id']; ?>
                                                 <br>
                                                 <?php echo $row['first_name'] . ' ' . $row['surname']; ?>
                                             </td>
-                                            <td><button onclick="confirmAction(0)" class="button-unlock">Unlock</button></td>
-                                            <td><button onclick="confirmAction(1)" class="button-lock">Lock</button></td>
-                                            <td><button onclick="confirmAction(2)" class="button-delete">Delete</button></td>
+                                            <td><button onclick="confirmActionAdmin(0)" class="button-unlock">Unlock</button></td>
+                                            <td><button onclick="confirmActionAdmin(1)" class="button-lock">Lock</button></td>
+                                            <td><button onclick="confirmActionAdmin(2)" class="button-delete">Delete</button></td>
                                         </tr>
                                         <?php
                                         }
@@ -68,14 +83,6 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                         </div>
                         <div class="split-half-right">
                             <p class="select-user-text">Here you can find a list of every staff member across all departments. Please click on a user from the full staff list on the left. Once you have done so, further options will become available for the selected user; unlocking their account, locking their account and deleting their account.</p>
-                            <!--<div class="confirmation-box">
-                                <p class="confirmation-box-text">Are you sure that you wish to lock this account?</p>
-                                <br>
-                                <div class="confirmation-box-buttons">
-                                    <button name="confirm" class="confirmation-button-yes" onclick="lockUnlockDeleteAccount(0)">✔</button>
-                                    <button name="cancel" class="confirmation-button-no" onclick="cancelAction()">X</button>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>

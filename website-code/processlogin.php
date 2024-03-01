@@ -3,13 +3,6 @@ session_start();
 include "db_connection.php";
 if (isset($_POST['username']) && isset($_POST['password'])) 
 {
-    function validate($data) //Strip out unwanted characters from input fields.
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
     $username = validate($_POST['username']);
     $password = validate($_POST['password']);
 
@@ -26,16 +19,16 @@ if (isset($_POST['username']) && isset($_POST['password']))
     else //User has entered something into username and password.
     {
         $selectusername = "SELECT * FROM user WHERE username = '$username'";
-        $resultusername = mysqli_query($connection, $selectusername);
+        $result = mysqli_query($connection, $selectusername);
 
         if($_SESSION['latestusername'] != $username) //If a new username is being used, it won't be a consecutive login attempt.
         {
             $_SESSION['loginattempts']  = 1;
         }
 
-        if (mysqli_num_rows($resultusername) != 0)
+        if (mysqli_num_rows($result) != 0)
         {
-            $rowfromusername = mysqli_fetch_assoc($resultusername);
+            $rowfromusername = mysqli_fetch_assoc($result);
             $_SESSION['latestusername'] = $rowfromusername['username'];
 
             if($rowfromusername['locked'] == 1) //If the account is locked, no use going further.
@@ -48,9 +41,9 @@ if (isset($_POST['username']) && isset($_POST['password']))
 
             if ($passwordhashed && password_verify($password, $passwordhashed))//Successful login; the hashed value exists/is true and if it succeedes the verify check against user input for password.
             {
-                $_SESSION['username'] = $rowfromusername['username'];
-                $_SESSION['name'] = $rowfromusername['first_name'];
                 $_SESSION['user_id'] = $rowfromusername['user_id'];
+                $_SESSION['name'] = $rowfromusername['first_name'];
+                $_SESSION['department_id'] = $rowfromusername['department_id'];
                     
                 switch ($rowfromusername['employee_type'])
                 {
@@ -102,4 +95,12 @@ else
 {
     header("Location: login.php");
     exit();
+}
+
+function validate($data) //Strip out unwanted characters from input fields.
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }

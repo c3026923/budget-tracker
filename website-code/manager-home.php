@@ -3,10 +3,24 @@ session_start();
 
 include "db_connection.php";
 
-$selectall = "SELECT * from user";
-$resultselectall = mysqli_query($connection, $selectall);
+if (isset($_SESSION['user_id'])) //If we somehow reach this page without having a global session user_id, go to the else part which is to send them back to login page.
+{
+    $userid = $_SESSION['user_id'];
+    $departmentid = $_SESSION['department_id'];
 
-if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    $determineusertype = "SELECT employee_type from user WHERE user_id = '$userid'";
+    $result1 = mysqli_query($connection, $determineusertype);
+    $row = mysqli_fetch_assoc($result1);
+    
+    if($row['employee_type'] != 1) //If the user is logged in as someone who isn't a manager and decides to try and access the manager page by changing the url manually, send them back to login page.
+    {
+        header("Location: processlogout.php");
+        exit();
+    }
+
+    $selectall = "SELECT * from user WHERE employee_type = '0' AND department_id = '$departmentid'";
+    $result2 = mysqli_query($connection, $selectall);
+
     ?>
 
     <?php include 'includes/head.php'; ?>
@@ -14,7 +28,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
     <head>
         <title>Budget Tracker | Manager Dashboard</title>
         <script src="scripts/datetime.js" defer></script>
-        <script src="scripts/refresh.js" defer></script>
+        <script src="scripts/manager.js" defer></script>
     </head>
 
     <body>
@@ -31,28 +45,33 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
                                 </h1?>
                         </div>
                         <div>
-                            <button onclick="window.location.href='manager-assigntarget.php'">Assign Department's Target Expenditure</button>
                             <button onclick="window.location.href='manager-submittransaction.php'">Submit Transaction(s) for Department</button>
                         </div>
                         <div class="horizontal-split-item-right">
                             <button onclick="window.location.href='processlogout.php'">Logout</button>
                         </div>
                     </div>
-                    <?php $date = date('m/d/Y h:i:s a', time()); ?>
+                    <?php $date = date('l, jS \of F Y');  ?>
+                    <?php $time = date('h:i:s A');  ?>
                     <h3>Today is
-                        <?php echo $date ?>
+                        <?php echo $date ?> and the time is
+                        <?php echo $time ?>
                     </h3>
                     <p>Please ensure that all mandatory transactions have the most-recent data uploaded to them.</p>
+                    <form action="processassigntarget.php" method="post">
+                        <input type="number" name="departmentid" placeholder="Assign Target Expenditure">
+                        <button type="submit">Submit</button>
+                    </form>
                     <div class="split-half">
                         <div class="split-half-left">
                             <table class="tableSection">
                                 <tbody>
                                     <tr class="tableSection.body">
                                         <?php
-                                        while ($row = mysqli_fetch_assoc($resultselectall)) 
+                                        while ($row = mysqli_fetch_assoc($result2)) 
                                         {
                                             ?>
-                                            <tr onclick="selectUser(this)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
+                                            <tr onclick="selectUser(this)" class="unclicked" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
                                             <td><?php echo $row['user_id']; ?>
                                                 <br>
                                                 <?php echo $row['first_name'] . ' ' . $row['surname']; ?>

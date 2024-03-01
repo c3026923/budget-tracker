@@ -15,7 +15,8 @@ if (isset($_GET['user_id']))
         echo "Error deleting user: " . mysqli_error($connection);
     }
     mysqli_close($connection);
-    header("Location: admin-home.php");} 
+    header("Location: admin-home.php");
+} 
 else 
 {
     header("Location: admin-home.php");

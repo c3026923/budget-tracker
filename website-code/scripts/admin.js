@@ -6,16 +6,11 @@ var unlockbuttons = document.getElementsByClassName('button-unlock');
 var lockbuttons = document.getElementsByClassName('button-lock');
 var deletebuttons = document.getElementsByClassName('button-delete');
 
-var confirmationbox = document.getElementsByClassName('confirmation-box')[0];
-var confirmationboxtext = document.getElementsByClassName('confirmation-box-text')[0];
-var confirmationboxyes = document.getElementsByClassName('confirmation-button-yes')[0];
-var confirmationboxno = document.getElementsByClassName('confirmation-button-no')[0];
 var selectusertext = document.getElementsByClassName('select-user-text')[0];
 
 var selectedUserId = null;
 
 deselect();
-resetRight();
 
 function selectUser(row) 
 {
@@ -28,7 +23,7 @@ function selectUser(row)
 
         for (i = 0; i < rows.length; i++) 
         {
-            rows[i].className = ""; //Select each row and remove their class, to set back to default white/unselected appearance.
+            rows[i].className = "unclicked"; //Select each row and remove their class, to set back to default white/unselected appearance.
         }
 
         for (i = 0; i < lockbuttons.length; i++) //Hide every button within the table (each row's buttons).
@@ -49,11 +44,15 @@ function selectUser(row)
         }
 
         rows[selectedUserId].className = "clicked"; //Set the slected row to the blue/'selected' appearance via changing class.
-    } 
+    }
+    else
+    {
+        console.log("DIDNT FIND USER ID");
+    }
 }
 
 
-function confirmAction(action) 
+function confirmActionAdmin(action) 
 {
     if (selectedUserId) 
     {
@@ -101,15 +100,11 @@ function deselect()
 
     for (i = 0; i < rows.length; i++) 
     {
-        rows[i].className = ""; //Select each row and remove their class, to set back to default white/unselected appearance.
+        rows[i].className = "unclicked"; //Select each row and remove their class, to set back to default white/unselected appearance.
     }
 }
 
 function resetRight()
 {
-    confirmationbox.hidden = true;
-    confirmationboxtext.hidden = true;
-    confirmationboxyes.hidden = true;
-    confirmationboxno.hidden = true;
     selectusertext.hidden = false;
 }
