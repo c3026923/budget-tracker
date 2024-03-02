@@ -4,7 +4,7 @@ session_unset();
 session_destroy();
 include "db_connection.php";
 
-$passwordhashed = password_hash('fasthands', PASSWORD_DEFAULT);
+$passwordhashed = password_hash('123', PASSWORD_DEFAULT);
 $sqlupdatepass = "UPDATE user SET password='$passwordhashed' WHERE username = 'pallen'";
 mysqli_query($connection, $sqlupdatepass);
 
@@ -55,3 +55,5 @@ mysqli_query($connection, $sqlupdatepass);
 $passwordhashed = password_hash('adminftw', PASSWORD_DEFAULT);
 $sqlupdatepass = "UPDATE user SET password='$passwordhashed' WHERE username = 'srichardson'";
 mysqli_query($connection, $sqlupdatepass);
+
+mysqli_close($connection);

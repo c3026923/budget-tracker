@@ -1,6 +1,6 @@
 <?php
 
-include "db_connection.php";
+include "../includes/db_connection.php";
 
 if (isset($_GET['user_id'])) 
 {
@@ -15,10 +15,10 @@ if (isset($_GET['user_id']))
         echo "Error deleting user: " . mysqli_error($connection);
     }
     mysqli_close($connection);
-    header("Location: admin-home.php");
+    header("Location: ../pages/admin-home.php");
 } 
 else 
 {
-    header("Location: admin-home.php");
+    header("Location: ../pages/admin-home.php");
     exit();
 }

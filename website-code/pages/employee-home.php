@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "db_connection.php";
+include "../includes/db_connection.php";
 
 if (isset($_SESSION['user_id'])) //If we somehow reach this page without having a global session user_id, go to the else part which is to send them back to login page.
 {
@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
     }
     ?>
 
-    <?php include 'includes/head.php'; ?>
+    <?php include '../includes/head.php'; ?>
 
     <head>
         <title>Budget Tracker | Employee Dashboard</title>
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
         <div class="container-centered-background">
             <div class="container-centered-wide">
                 <div class="header-outer-region">
-                    <img src="images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
+                    <img src="../images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
                 </div>
                 <div class="main-body">
                     <div class="horizontal-split">
@@ -48,10 +48,10 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                                 </h1?>
                         </div>
                         <div>
-                            <button onclick="window.location.href='employee-edittransactions.php'">Edit Your Submitted Transaction(s) for Department</button>
+                            <button onclick="window.location.href='../pages/employee-edittransactions.php'">Edit Your Submitted Transaction(s) for Department</button>
                         </div>
                         <div class="horizontal-split-item-right">
-                            <button onclick="window.location.href='processlogout.php'">Logout</button>
+                            <button onclick="window.location.href='../logic/processlogout.php'">Logout</button>
                         </div>
                     </div>
                     <?php $date = date('l, jS \of F Y');  ?>
@@ -62,7 +62,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                     </h3>
                     <p>You have submitted <?php echo $count ?> expense transaction submissions. Please continue to complete any outstanding expense submissions prior to close of day.</p>
                     <p>Submit a new transaction:</p>
-                    <form action="processsubmitexpense.php" method="post">
+                    <form action="../logic/processsubmitexpense.php" method="post">
                         <input type="text" name="expensename" class="" placeholder="Expense Name">
                         <input type="text" name="expenseinfo" class="" placeholder="Expense Information">
                         <input type="number" step="0.01" min="0" name="expensevalue" class="" placeholder="Value">
@@ -78,7 +78,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
 } 
 else 
 {
-    header("Location: login.php");
+    header("Location: ../pages/login.php");
     exit();
 }
 ?>

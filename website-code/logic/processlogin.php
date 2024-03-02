@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_connection.php";
+include "../includes/db_connection.php";
 if (isset($_POST['username']) && isset($_POST['password'])) 
 {
     $username = validate($_POST['username']);
@@ -8,12 +8,14 @@ if (isset($_POST['username']) && isset($_POST['password']))
 
     if (empty($username)) 
     {
-        header("Location: login.php?error=username is required");
+        mysqli_close($connection);
+        header("Location: ../pages/login.php?error=username is required");
         exit();
     } 
     else if (empty($password)) 
     {
-        header("Location: login.php?error=password is required");
+        mysqli_close($connection);
+        header("Location: ../pages/login.php?error=password is required");
         exit();
     } 
     else //User has entered something into username and password.
@@ -33,7 +35,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
 
             if($rowfromusername['locked'] == 1) //If the account is locked, no use going further.
             {
-                header("Location: login.php?error=Account is locked, please contact system  administrator");
+                mysqli_close($connection);
+                header("Location: ../pages/login.php?error=Account is locked, please contact system  administrator");
                 exit();
             }
 
@@ -48,13 +51,16 @@ if (isset($_POST['username']) && isset($_POST['password']))
                 switch ($rowfromusername['employee_type'])
                 {
                     case 0:
-                        header("Location: employee-home.php");
+                        mysqli_close($connection);
+                        header("Location: ../pages/employee-home.php");
                         exit();
                     case 1:
-                        header("Location: manager-home.php");
+                        mysqli_close($connection);
+                        header("Location: ../pages/manager-home.php");
                         exit();
                     case 2:
-                        header("Location: admin-home.php");
+                        mysqli_close($connection);
+                        header("Location: ../pages/admin-home.php");
                         exit();
                 }
             } 
@@ -62,7 +68,8 @@ if (isset($_POST['username']) && isset($_POST['password']))
             {
                 if($rowfromusername['employee_type'] == 2)//If they're an admin, don't bother trying to track unsuccessful login counts.
                 {
-                    header("Location: login.php?error=incorrect password for this administator account");
+                    mysqli_close($connection);
+                    header("Location: ../pages/login.php?error=incorrect password for this administator account");
                     exit();
                 }
 
@@ -70,30 +77,34 @@ if (isset($_POST['username']) && isset($_POST['password']))
 
                 if ($attempts >= 3) 
                 {
-                    header("Location: login.php?error=Login attempts: $attempts. Account now locked");
+                    header("Location: ../pages/login.php?error=Login attempts: $attempts. Account now locked");
                     $sqllockacc = "UPDATE user SET locked='1' WHERE username = '$username'";
                     mysqli_query($connection, $sqllockacc);
+                    mysqli_close($connection);
                     $_SESSION['loginattempts']  = 0;
                     exit();
                 } 
                 else 
                 {
+                    mysqli_close($connection);
                     $_SESSION['loginattempts']++;
-                    header("Location: login.php?error=incorrect password for this user. Login attempts: $attempts");
+                    header("Location: ../pages/login.php?error=incorrect password for this user. Login attempts: $attempts");
                     exit();
                 }
             }
         } 
         else 
         {
-            header("Location: login.php?error=username not recognized");
+            mysqli_close($connection);
+            header("Location: ../pages/login.php?error=username not recognized");
             exit();
         }
     }
 } 
 else 
 {
-    header("Location: login.php");
+    mysqli_close($connection);
+    header("Location: ../pages/login.php");
     exit();
 }
 

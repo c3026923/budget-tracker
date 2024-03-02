@@ -1,4 +1,4 @@
-<?php include 'includes/head.php'; ?>
+<?php include '../../website-code/includes/head.php'; ?>
 
 <head>
     <title>Budget Tracker | Login</title>
@@ -7,9 +7,9 @@
 <body>
     <div class="container-centered-background">
         <div class="container-centered-login">
-            <form action="processlogin.php" method="post">
+            <form action="../logic/processlogin.php" method="post">
                 <div class="header-outer-region">
-                    <img src="images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
+                    <img src="../images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
                 </div>
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error">

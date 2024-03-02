@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_connection.php";
+include "../includes/db_connection.php";
 
 if (isset($_POST['expensename']) && isset($_POST['expenseinfo']) && isset($_POST['expensevalue'])) 
 {
@@ -13,11 +13,11 @@ if (isset($_POST['expensename']) && isset($_POST['expenseinfo']) && isset($_POST
     mysqli_query($connection, $insert);
 
     mysqli_close($connection);
-    header("Location: employee-home.php");
+    header("Location: ../pages/employee-home.php");
 } 
 else 
 {
-    header("Location: employee-home.php?error=not all fields have been entered");
+    header("Location: ../pages/employee-home.php?error=not all fields have been entered");
     exit();
 }
 

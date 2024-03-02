@@ -6,7 +6,7 @@ if (isset($_SESSION['user_id']))
 
     ?>
 
-    <?php include 'includes/head.php'; ?>
+    <?php include '../includes/head.php'; ?>
 
     <head>
         <title>Budget Tracker | Dashboard</title>
@@ -16,7 +16,7 @@ if (isset($_SESSION['user_id']))
         <div class="container-centered-background">
             <div class="container-centered-narrow">
                 <div class="header-outer-region">
-                    <img src="images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
+                    <img src="../images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
                 </div>
                 <div>
                     <div class="horizontal-split">
@@ -24,7 +24,7 @@ if (isset($_SESSION['user_id']))
                             <h2>Please enter all required fields</h2>
                         </div>
                     </div>
-                    <form action="processcreateuser.php" method="post">
+                    <form action="../logic/processcreateuser.php" method="post">
                         <input type="number" name="departmentid" class="createinput" placeholder="Department ID">
                         <input type="text" name="firstname" class="createinput" placeholder="First Name">
                         <input type="text" name="surname" class="createinput" placeholder="Surname">
@@ -38,7 +38,7 @@ if (isset($_SESSION['user_id']))
                         <button type="submit">Submit (Create User)</button>
                     </form>
                 </div>
-                <button onclick="window.location.href='admin-home.php'" class="button-return">Return Home</button>
+                <button onclick="window.location.href='../pages/admin-home.php'" class="button-return">Return Home</button>
             </div>
         </div>
 
@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id']))
 }
 else 
 {
-    header("Location: login.php");
+    header("Location: ../pages/login.php");
     exit();
 }
 ?>

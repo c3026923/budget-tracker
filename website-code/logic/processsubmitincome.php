@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "db_connection.php";
+include "../includes/db_connection.php";
 
 if (isset($_POST['incomename']) && isset($_POST['incomeinfo']) && isset($_POST['incomevalue'])) 
 {
@@ -13,11 +13,11 @@ if (isset($_POST['incomename']) && isset($_POST['incomeinfo']) && isset($_POST['
     mysqli_query($connection, $insert);
 
     mysqli_close($connection);
-    header("Location: manager-submittransaction.php");
+    header("Location: ../pages/manager-submittransaction.php");
 } 
 else 
 {
-    header("Location: manager-submittransaction.php?error=not all fields have been entered");
+    header("Location: ../pages/manager-submittransaction.php?error=not all fields have been entered");
     exit();
 }
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include "db_connection.php";
+include "../includes/db_connection.php";
 
 $userid = $_SESSION['user_id'];
 
@@ -12,18 +12,18 @@ $result = mysqli_query($connection, $selectalltransactions);
 
 ?>
 
-<?php include 'includes/head.php'; ?>
+<?php include '../includes/head.php'; ?>
 
 <head>
     <title>Budget Tracker | Submit Transactions </title>
-    <script src="scripts/edittransaction.js" defer></script>
+    <script src="../scripts/edittransaction.js" defer></script>
 </head>
 
 <body>
     <div class="container-centered-background">
         <div class="container-centered-wide">
             <div class="header-outer-region">
-                <img src="images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
+                <img src="../images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
             </div>
             <div class="main-body">
                 <div class="horizontal-split">

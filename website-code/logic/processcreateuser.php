@@ -1,15 +1,7 @@
 <?php
-include "db_connection.php";
+include "../includes/db_connection.php";
 if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST['surname']) && isset($_POST['dob']) && isset($_POST['email']) && isset($_POST['employeetype']) && isset($_POST['locked']) && isset($_POST['createusername']) && isset($_POST['createpassword'])) 
 {
-    function validate($data) //Strip out unwanted characters from input fields.
-    {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $departmentid = validate($_POST['departmentid']);
     $firstname = validate($_POST['firstname']);
     $surname = validate($_POST['surname']);
@@ -25,7 +17,8 @@ if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST[
     {
         if (is_null($input)) 
         {
-            header("Location: home-admin.php?error=not all fields have been entered");
+            mysqli_close($connection);
+            header("Location: ../pages/home-admin.php?error=not all fields have been entered");
             exit();
         }
     }
@@ -35,10 +28,18 @@ if (isset($_POST['departmentid']) && isset($_POST['firstname']) && isset($_POST[
     mysqli_query($connection, $sqlinsert);
 
     mysqli_close($connection);
-    header("Location: admin-home.php");
+    header("Location: ../pages/admin-home.php");
 } 
 else 
 {
-    header("Location: admin-home.php");
+    header("Location: ../pages/admin-home.php");
     exit();
+}
+
+function validate($data) //Strip out unwanted characters from input fields.
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }

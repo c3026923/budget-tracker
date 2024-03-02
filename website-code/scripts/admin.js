@@ -76,13 +76,13 @@ function confirmActionAdmin(action)
             switch (action) 
             {
                 case 0:
-                    window.location.href = "processuserunlock.php?user_id=" + selectedUserId;
+                    window.location.href = "../logic/processuserunlock.php?user_id=" + selectedUserId;
                     break;
                 case 1:
-                    window.location.href = "processuserlock.php?user_id=" + selectedUserId;
+                    window.location.href = "../logic/processuserlock.php?user_id=" + selectedUserId;
                     break;
                 case 2:
-                    window.location.href = "processuserdelete.php?user_id=" + selectedUserId;
+                    window.location.href = "../logic/processuserdelete.php?user_id=" + selectedUserId;
                     break;
             }
         }
