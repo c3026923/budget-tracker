@@ -26,8 +26,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
 
     <head>
         <title>Budget Tracker | Admin Dashboard</title>
-        <script src="../scripts/datetime.js" defer></script>
-        <script src="../scripts/admin.js" defer></script>
+        <script src="../scripts/selection.js" defer></script>
     </head>
 
     <body>
@@ -66,14 +65,14 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                                         while ($row = mysqli_fetch_assoc($result2)) 
                                         {
                                             ?>
-                                            <tr onclick="selectUser(this)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
+                                            <tr onclick="selectRow(this, 2)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
                                             <td class="td-name-section"><?php echo $row['user_id']; ?>
                                                 <br>
                                                 <?php echo $row['first_name'] . ' ' . $row['surname']; ?>
                                             </td>
-                                            <td><button onclick="confirmActionAdmin(0)" class="button-unlock">Unlock</button></td>
-                                            <td><button onclick="confirmActionAdmin(1)" class="button-lock">Lock</button></td>
-                                            <td><button onclick="confirmActionAdmin(2)" class="button-delete">Delete</button></td>
+                                            <td><button onclick="confirmAdminAction(0)" class="button-unlock">Unlock</button></td>
+                                            <td><button onclick="confirmAdminAction(1)" class="button-lock">Lock</button></td>
+                                            <td><button onclick="confirmAdminAction(2)" class="button-delete">Delete</button></td>
                                         </tr>
                                         <?php
                                         }

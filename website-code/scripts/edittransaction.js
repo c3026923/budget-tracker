@@ -1,28 +1,57 @@
-var table = document.getElementsByClassName('tableSection')[0];
-var tbody = table.getElementsByTagName("tbody")[0]; //Concept of using tbody to determine on click from https://stackoverflow.com/questions/47170952/javascript-can-get-row-index-and-get-cell-data-at-same-time
-var rows = tbody.getElementsByTagName("tr");
-
+var rows = null;
 var selectedTransactionId = null;
 
-function selectTransaction(row) 
+if(document.getElementsByClassName('tableSection')[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr"))
 {
-    var transactionId = row.getAttribute('data-transaction_id');
+    rows = document.getElementsByClassName('tableSection')[0].getElementsByTagName("tbody")[0].getElementsByTagName("tr"); //Concept of using tbody to determine on click from https://stackoverflow.com/questions/47170952/javascript-can-get-row-index-and-get-cell-data-at-same-time
+}
 
-    if (transactionId) 
+function confirmActionEmployee(td, action) 
+{
+    selectedTransactionId = td.getAttribute('data-transaction_id');
+    console.log("Transaction ID = " + selectedTransactionId);
+
+    var confirmed = false;
+
+    switch (action) 
     {
-        selectedTransactionId = transactionId;
+        case 0:
+            confirmed = confirm("Are you sure that you wish to edit the selected transaction?");
+        break;
+    }
 
-        for (i = 0; i < rows.length; i++)
+    if (confirmed) 
+    {
+        switch (action) 
         {
-            rows[i].className = "unclicked"; //Select each row and remove their class, to set back to default white/unselected appearance.
-            console.log("ran!");
+            case 0:
+                window.location.href = "employee-edittransaction.php?expense_id=" + selectedTransactionId;
+            break;
         }
-
-        rows[selectedTransactionId].className = "clicked"; //Set the slected row to the blue/'selected' appearance via changing class.
     }
 }
 
-function editTransaction()
+function confirmActionManager(td, action) 
 {
+    selectedTransactionId = td.getAttribute('data-transaction_id');
+    console.log("Transaction ID = " + selectedTransactionId);
 
-}
+    var confirmed = false;
+
+    switch (action) 
+    {
+        case 0:
+            confirmed = confirm("Are you sure that you wish to edit the selected transaction?");
+        break;
+    }
+
+    if (confirmed) 
+    {
+        switch (action) 
+        {
+            case 0:
+                window.location.href = "manager-edittransaction.php?income_id=" + selectedTransactionId;
+            break;
+        }
+    }
+} 

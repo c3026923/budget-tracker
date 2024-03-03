@@ -32,8 +32,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
 
     <head>
         <title>Budget Tracker | Manager Dashboard</title>
-        <script src="../scripts/datetime.js" defer></script>
-        <script src="../scripts/manager.js" defer></script>
+        <script src="../scripts/selection.js" defer></script>
     </head>
 
     <body>
@@ -47,7 +46,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                         <div>
                             <h1>Welcome,
                                 <?php echo $_SESSION['name'] ?>
-                                </h1?>
+                            </h1?>
                         </div>
                         <div>
                             <button onclick="window.location.href='manager-submittransaction.php'">Submit Transaction(s) for Department</button>
@@ -62,12 +61,14 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                         <?php echo $date ?> and the time is
                         <?php echo $time ?>
                     </h3>
-                    <p>Please ensure that all mandatory transactions have the most-recent data uploaded to them.</p>
-                    <form action="../logic/processassigntarget.php" method="post">
-                        <input type="number" step="0.01" min="0" name="budgetvalue" placeholder="Assign Target Budget">
-                        <button type="submit">Submit</button>
-                    </form>
-                    <p class="horizontal-split-item-right">The current budget for the department is: <?php echo $value ?></p>
+                    <p>Please ensure that all recorded transactions submitted by your staff have the correct data uploaded to them.</p>
+                    <div class="horizontal-split">
+                        <p class="horizontal-split-item-right">The current budget for the department is: <?php echo $value ?></p>
+                        <form action="../logic/processassigntarget.php" method="post">
+                            <input type="number" step="0.01" min="0" name="budgetvalue" class="assigninput" placeholder="Assign Target Budget"></input>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
                     <div class="split-half">
                         <div class="split-half-left">
                         <table class="tableSection">
@@ -77,7 +78,7 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
                                         while ($row = mysqli_fetch_assoc($result2)) 
                                         {
                                             ?>
-                                            <tr onclick="selectUser(this)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
+                                            <tr onclick="selectRow(this, 1)" data-userid="<?php echo $row['user_id']; ?>"> <!-- Concept of data- to store data taken from https://www.w3schools.com/TAGS/att_data-.asp -->
                                             <td class="td-name-section"><?php echo $row['user_id']; ?>
                                                 <br>
                                                 <?php echo $row['first_name'] . ' ' . $row['surname']; ?>

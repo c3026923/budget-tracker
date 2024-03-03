@@ -31,7 +31,6 @@ if (isset($_SESSION['user_id'])) //If we somehow reach this page without having 
 
     <head>
         <title>Budget Tracker | Employee Dashboard</title>
-        <script src="scripts/datetime.js" defer></script>
     </head>
 
     <body>

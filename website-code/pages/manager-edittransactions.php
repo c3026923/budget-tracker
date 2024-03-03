@@ -5,7 +5,7 @@ include "../includes/db_connection.php";
 
 $userid = $_SESSION['user_id'];
 
-$selectalltransactions = "SELECT * FROM expense_transaction WHERE user_id = '$userid'";
+$selectalltransactions = "SELECT * FROM income_transaction WHERE user_id = '$userid'";
 $result = mysqli_query($connection, $selectalltransactions);
 
 ?>
@@ -31,15 +31,15 @@ $result = mysqli_query($connection, $selectalltransactions);
                             </h1?>
                     </div>
                     <div>
-                        <button onclick="window.location.href='employee-home.php'">Return Home</button>
+                        <button onclick="window.location.href='manager-home.php'">Return Home</button>
                     </div>
                 </div>
                 <p>Please see below a list of all transactions you have submitted for your department.</p>
                 <table class="tableSection">
                     <thead>
-                        <th class="th-transaction">Expense Transaction Name</th>
-                        <th class="th-transaction">Expense Transaction Information</th>
-                        <th class="th-transaction">Expense Transaction Value</th>
+                        <th class="th-transaction">Income Transaction Name</th>
+                        <th class="th-transaction">Income Transaction Information</th>
+                        <th class="th-transaction">Income Transaction Value</th>
                         <th class="th-transaction">Action</th>
                     </thead>
                     <tbody>
@@ -52,7 +52,7 @@ $result = mysqli_query($connection, $selectalltransactions);
                                 <td class="td-transaction"><?php echo $row['name']; ?></td>
                                 <td class="td-transaction"><?php echo $row['info']; ?></td>
                                 <td class="td-transaction"><?php echo $row['value']; ?></td>
-                                <td class="td-transaction"><button onclick="confirmActionEmployee(this, 0)" class="button-edit" data-transaction_id="<?php echo $row['expense_id']; ?>">Edit</button></td>
+                                <td class="td-transaction"><button onclick="confirmActionManager(this, 0)" class="button-edit" data-transaction_id="<?php echo $row['income_id']; ?>">Edit</button></td>
                                 </tr>
                                 <?php
                             }
