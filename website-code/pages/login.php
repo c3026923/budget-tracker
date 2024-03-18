@@ -9,7 +9,7 @@
         <div class="container-centered-login">
             <form action="../logic/processlogin.php" method="post">
                 <div class="header-outer-region">
-                    <img src="../images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
+                    <img src="../images/logoimage.png" class="image-fill" alt="" width="340" height="130">
                 </div>
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error">
@@ -22,9 +22,6 @@
                 <input type="password" class="createinput" name="password" placeholder="Password">
                 <button type="submit">Login</button>
             </form>
-            <div>
-                <!--<a href="testforcepassword.php">BRUTE FORCE NEW PASSWORD</a>-->
-            </div>
         </div>
     </div>
 </body>

@@ -1,3 +1,8 @@
+* 
+{
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
 
 .container-centered-background
 {
@@ -52,12 +57,6 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 600px slateblue;
-}
-
-* 
-{
-    font-family: sans-serif;
-    box-sizing: border-box;
 }
 
 form 
@@ -121,7 +120,6 @@ button:hover, input:hover
     background-color: #FF9200;
     border-color: mediumslateblue;
     margin: auto;
-
 }
 
 .button-lock
@@ -186,7 +184,11 @@ p
 .header-outer-region
 {
     padding: 10px;
-    width: 100%;
+}
+
+.header-solid-block
+{
+    background-color: #7c7c7c;
 }
 
 .image-fill
@@ -262,9 +264,8 @@ tbody.staff-list
 {
     display: flex;
     flex-direction: column;
-    padding: 2px
+    padding: 2px;
 }
-
 
 table.tableSection thead, table.tableSection tbody /*Concept of using .tablesection, thead etc. from https://stackoverflow.com/questions/9844022/css-merging-div-and-table-borders*/
 {

@@ -23,7 +23,9 @@ if (isset($_GET['expense_id']))
         <div class="container-centered-background">
             <div class="container-centered-small">
                 <div class="header-outer-region">
-                    <img src="../images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
+                    <div class="header-solid-block">
+                        <img src="../images/logoimage-long.png" alt="" width="780" height="130">
+                    </div>
                 </div>
                 <div class="main-body">
                     <div class="horizontal-split">

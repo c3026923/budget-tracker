@@ -20,9 +20,11 @@ $result = mysqli_query($connection, $selectalltransactions);
 <body>
     <div class="container-centered-background">
         <div class="container-centered-wide">
-            <div class="header-outer-region">
-                <img src="../images/testimage-long.png" class="image-fill" alt="" width="780" height="130">
-            </div>
+                <div class="header-outer-region">
+                    <div class="header-solid-block">
+                        <img src="../images/logoimage-long.png" alt="" width="780" height="130">
+                    </div>
+                </div>
             <div class="main-body">
                 <div class="horizontal-split">
                     <div>

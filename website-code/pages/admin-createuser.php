@@ -16,7 +16,9 @@ if (isset($_SESSION['user_id']))
         <div class="container-centered-background">
             <div class="container-centered-narrow">
                 <div class="header-outer-region">
-                    <img src="../images/testimage-short.png" class="image-fill" alt="" width="340" height="130">
+                    <div class="header-solid-block">
+                        <img src="../images/logoimage-long.png" alt="" width="780" height="130">
+                    </div>
                 </div>
                 <div>
                     <div class="horizontal-split">
