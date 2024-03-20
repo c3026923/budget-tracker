@@ -265,6 +265,8 @@ tbody.staff-list
     display: flex;
     flex-direction: column;
     padding: 2px;
+    overflow:auto;
+    height: 33vh;
 }
 
 table.tableSection thead, table.tableSection tbody /*Concept of using .tablesection, thead etc. from https://stackoverflow.com/questions/9844022/css-merging-div-and-table-borders*/
